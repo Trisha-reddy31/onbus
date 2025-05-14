@@ -1,0 +1,15 @@
+<div class="row">
+  <% @subscriptions.each do |subscription| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-lg">
+        <div class="card-header text-center bg-danger text-white">
+          <h5 class="card-title"><%= subscription[:plan] %></h5>
+        </div>
+        <div class="card-body bg-dark text-white">
+          <p><%= subscription[:details] %></p>
+          <%= link_to 'Subscribe Now', show_plan_subscriptions_path(plan: subscription[:plan].downcase), class: 'btn btn-danger w-100' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

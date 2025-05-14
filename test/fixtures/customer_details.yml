@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  gender: MyString
+  age: 1
+  contact: MyString
+  plan: MyString
+  price: 9.99
+  date_of_issue: 2025-05-10
+  date_of_expiry: 2025-05-10
+  user: one
+
+two:
+  name: MyString
+  gender: MyString
+  age: 1
+  contact: MyString
+  plan: MyString
+  price: 9.99
+  date_of_issue: 2025-05-10
+  date_of_expiry: 2025-05-10
+  user: two

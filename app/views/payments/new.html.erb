@@ -1,0 +1,40 @@
+<%= form_with model: @payment, url: payments_path, local: true, class: "mt-5" do |f| %>
+  <div class="container">
+    <h2 class="text-center mb-4 text-danger">
+      <span class="emoji">&#128179;</span> Payment Details <span class="emoji">&#128179;</span>
+    </h2>
+
+    <!-- First Name Field -->
+    <div class="mb-3">
+      <%= f.label :first_name, class: "form-label text-white" %>
+      <%= f.text_field :first_name, class: "form-control", placeholder: "Enter your first name" %>
+    </div>
+    <!-- Last Name Field -->
+    <div class="mb-3">
+      <%= f.label :last_name, class: "form-label text-white" %>
+      <%= f.text_field :last_name, class: "form-control", placeholder: "Enter your last name" %>
+    </div>
+    <!-- Credit Card Number Field -->
+    <div class="mb-3">
+      <%= f.label :account_number, "Credit Card Number", class: "form-label text-white" %>
+      <%= f.text_field :account_number, class: "form-control", placeholder: "Enter your credit card number" %>
+    </div>
+    <!-- CVV Field -->
+    <div class="mb-3">
+      <%= f.label :cvv, class: "form-label text-white" %>
+      <%= f.text_field :cvv, class: "form-control", placeholder: "Enter CVV", maxlength: 3 %>
+    </div>
+    <!-- Expiration Month Field -->
+    <div class="mb-3">
+      <%= f.label :month, "Expiration Month", class: "form-label text-white" %>
+      <%= f.select :month, (1..12).map { |m| [m, m] }, class: "form-control" %>
+    </div>
+    <!-- Expiration Year Field -->
+    <div class="mb-3">
+      <%= f.label :year, "Expiration Year", class: "form-label text-white" %>
+      <%= f.select :year, (Date.today.year..(Date.today.year + 10)).map { |y| [y, y] }, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Pay Now", class: "btn btn-danger" %>
+  </div>
+<% end %>

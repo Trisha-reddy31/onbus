@@ -1,0 +1,26 @@
+<h1>Quarterly Subscription Plan</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Unique ID</th>
+      <th>From State</th>
+      <th>To State</th>
+      <th>Fixed Price (₹)</th>
+      <th>Valid Number of Trips</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plan_data.each do |plan| %>
+      <tr>
+        <td><%= plan[:unique_id] %></td>
+        <td><%= plan[:from_state] %></td>
+        <td><%= plan[:to_state] %></td>
+        <td><%= number_to_currency(plan[:price]) %></td>
+        <td><%= plan[:trips] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Quarterly Subscription', quareterly_subscriptions_subscriptions_path %>
