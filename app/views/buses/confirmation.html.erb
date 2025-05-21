@@ -1,0 +1,14 @@
+<div class="container mt-5 text-center">
+  <h2>🎉 Booking Confirmed!</h2>
+
+  <% if @booking %>
+    <p>Your booking for <strong><%= @booking.bus_name %></strong> is confirmed.</p>
+    <p><strong>PNR Number:</strong> <%= @booking.pnr %></p>
+    <p>Fare Paid: <%= @booking.fare %></p>
+  <% else %>
+    <p>Sorry, we couldn't find your booking details.</p>
+  <% end %>
+
+  
+</div>
+

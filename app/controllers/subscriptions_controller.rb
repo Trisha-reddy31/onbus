@@ -11,14 +11,14 @@ class SubscriptionsController < ApplicationController
 
   def show_plan
     @plan = params[:plan]
-    @plan_data = case @plan
-    when 'monthly'
-      monthly_plans
-    when 'quarterly'
-      quarterly_plans
-    when 'annually'
-      annually_plans
-    end
+    @plan_data =  case @plan
+                    when 'monthly'
+                      monthly_plans
+                    when 'quarterly'
+                      quarterly_plans
+                    when 'annually'
+                      annually_plans
+                  end
   end
 
   private

@@ -35,6 +35,11 @@
       <%= f.select :year, (Date.today.year..(Date.today.year + 10)).map { |y| [y, y] }, class: "form-control" %>
     </div>
 
+    <!-- Hidden Fields to pass plan and route info -->
+    <%= hidden_field_tag :plan, params[:plan] %>
+    <%= hidden_field_tag :from_state, params[:from_state] %>
+    <%= hidden_field_tag :to_state, params[:to_state] %>
+
     <%= f.submit "Pay Now", class: "btn btn-danger" %>
   </div>
 <% end %>

@@ -1,0 +1,8 @@
+<h2>Select Your Seat for Bus on <%= @bus.date %> at <%= @bus.timing %></h2>
+
+<%= form_with url: confirm_booking_journeys_path, method: :post do %>
+  <%= hidden_field_tag :bus_id, @bus.id %>
+  <div class="seats">
+    <!-- Seat layout here -->
+  </div>
+<% end %>

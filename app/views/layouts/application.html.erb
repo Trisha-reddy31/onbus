@@ -24,9 +24,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <% if user_signed_in? %>
-                        <li class="nav-item">
-                            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-                        </li>
+                      <li class="nav-item">
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger nav-link', form: { class: 'd-inline' } %>
+          </li>
+          
                     <% else %>
                         <li class="nav-item">
                             <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>

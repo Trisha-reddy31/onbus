@@ -1,4 +1,5 @@
 <h3><%= @plan.capitalize %> Subscription Plan</h3>
+
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -11,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @plan_data.each do |plan| %>
+    <% @plan_data.each_with_index do |plan, index| %>
       <tr>
         <td><%= plan[:unique_id] %></td>
         <td><%= plan[:from_state] %></td>
@@ -19,7 +20,9 @@
         <td><%= plan[:price] %></td>
         <td><%= plan[:trips] %></td>
         <td>
-          <%= link_to 'Subscribe Now', new_customer_detail_path(plan: @plan, price: plan[:price]), class: 'btn btn-success' %>
+          <% unless index == 0 %>
+            <%= link_to 'Subscribe Now', new_customer_detail_path(plan: @plan, price: plan[:price]), class: 'btn btn-success' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

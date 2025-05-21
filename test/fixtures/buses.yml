@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source: MyString
+  destination: MyString
+  date: 2025-05-20
+  timing: MyString
+  status: MyString
+
+two:
+  source: MyString
+  destination: MyString
+  date: 2025-05-20
+  timing: MyString
+  status: MyString

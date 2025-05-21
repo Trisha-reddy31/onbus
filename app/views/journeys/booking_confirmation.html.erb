@@ -1,0 +1,7 @@
+<h2>Booking Confirmed!</h2>
+
+<p>Your booking for bus <%= @booking.bus.id %> on <%= @booking.bus.date %> at <%= @booking.bus.timing %> is confirmed.</p>
+<p>Seat Number: <%= @booking.seat_number %></p>
+<p>E-Ticket Number: <%= @booking.ticket_number %></p>
+
+<%= link_to "Back to Home", root_path, class: "btn btn-primary" %>

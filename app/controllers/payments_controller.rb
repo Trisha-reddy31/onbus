@@ -7,15 +7,15 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
-  
-    # Ensure the customer_id is passed correctly (may need to set it dynamically)
-    @payment.customer_id = params[:payment][:customer_id] if params[:payment][:customer_id]
-  
-    # Extract month and year directly from params for the credit card
+
+    # Extract plan and route info from params
+    plan = params[:plan]
+    from_state = params[:from_state]
+    to_state = params[:to_state]
+
     month = params[:payment][:month]
     year = params[:payment][:year]
-  
-    # Initialize the ActiveMerchant credit card object
+
     credit_card = ActiveMerchant::Billing::CreditCard.new(
       first_name: params[:payment][:first_name],
       last_name: params[:payment][:last_name],
@@ -24,18 +24,21 @@ class PaymentsController < ApplicationController
       year: year.to_i,
       verification_value: params[:payment][:cvv]
     )
-  
-    # Validate the credit card
-    if credit_card.valid?
-      # Call your payment gateway (ActiveMerchant setup should have this)
-      response = GATEWAY.purchase(1000, credit_card)  # Adjust the amount (1000 = $10.00)
 
-      # Handle the response from the gateway
+    if credit_card.valid?
+      response = GATEWAY.purchase(1000, credit_card)  # Adjust amount as needed
+
       if response.success?
-        # Save the payment details (you may want to include more attributes like amount, status, etc.)
         @payment.save
-        redirect_to thank_you_path, notice: "Payment successful!"
-      else
+
+        # Redirect with subscription info in params
+        redirect_to thank_you_path(
+  plan: 'monthly',
+  from_state: 'Maharashtra',
+  to_state: 'Tamil Nadu'
+)
+
+             else
         flash[:alert] = "Payment failed: #{response.message}"
         render :new
       end
@@ -48,7 +51,6 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-    # Permit only the fields that are part of the Payment model
     params.require(:payment).permit(:first_name, :last_name, :account_number, :cvv, :customer_id)
   end
 end

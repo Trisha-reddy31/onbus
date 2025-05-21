@@ -1,20 +1,13 @@
-<h2 class="text-center text-danger my-5">
-  <span class="emoji">&#128512;</span> Payment Successful! <span class="emoji">&#128579;</span>
-</h2>
-<p class="text-center text-light mb-4">
-  <span class="emoji">&#128640;</span> Thank you for choosing the Onbus Subscription Pass. <br>
-  Enjoy your ride with comfort and ease!
-</p>
+<% if @subscription.present? %>
+  <h2>🎉 Subscription Successful!</h2>
+  <p><strong>Plan:</strong> <%= @plan_param.capitalize %></p>
+  <p><strong>Route:</strong> <%= @subscription[:from_state] %> to <%= @subscription[:to_state] %></p>
+  <p><strong>Trips:</strong> <%= @subscription[:trips] %></p>
+  <p><strong>Price:</strong> ₹<%= @subscription[:price] %></p>
+  <p><strong>Valid From:</strong> <%= @start_date.strftime('%B %d, %Y') %></p>
+  <p><strong>Valid Till:</strong> <%= @expiry_date.strftime('%B %d, %Y') %></p>
 
-<div class="text-center">
-  <blockquote class="blockquote text-danger">
-    <p class="mb-0">"Life is a journey, enjoy the ride!"</p>
-    <footer class="blockquote-footer text-light">Anonymous</footer>
-  </blockquote>
-
-  <div class="mt-4">
-    <a href="#" class="btn btn-danger btn-lg">
-      <span class="emoji">&#128652;</span> Start Your Journey!
-    </a>
-  </div>
-</div>
+<%= link_to "Start Your Journey", start_journeys_path(plan_id: @plan_id), class: "btn btn-primary mt-4" %>
+<% else %>
+  <p class="text-danger">No matching subscription found for this route and plan.</p>
+<% end %>
