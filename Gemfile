@@ -20,7 +20,7 @@ gem "devise"
 gem 'bootstrap', '~> 5.3.5'
 gem 'jquery-rails'
 gem 'sassc-rails'
-gem 'activemerchant', '~> 1.125.0'
+gem 'activemerchant', '~> 1.137.0'
 gem 'mysql2', '>= 0.5.3'
 
 gem 'paypal-sdk-rest'
